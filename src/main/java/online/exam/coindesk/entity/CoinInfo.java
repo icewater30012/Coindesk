@@ -1,7 +1,6 @@
 package online.exam.coindesk.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table
