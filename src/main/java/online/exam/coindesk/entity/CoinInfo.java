@@ -5,30 +5,32 @@ import javax.persistence.*;
 @Entity
 @Table
 public class CoinInfo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    private Integer id;
 
     @Column(unique = true)
-    String code;
+    private String code;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "coin_name_id")
+    private CoinNameLocale coinNameLocale;
 
     @Column
-    String name;
+    private String symbol;
 
     @Column
-    String symbol;
+    private String description;
 
     @Column
-    String description;
+    private String rate;
 
     @Column
-    String rate;
+    private Float rate_float;
 
     @Column
-    Float rate_float;
-
-    @Column
-    String updated_time;
+    private String updated_time;
 
     public Integer getId() {
         return id;
@@ -46,12 +48,12 @@ public class CoinInfo {
         this.code = code;
     }
 
-    public String getName() {
-        return name;
+    public CoinNameLocale getCoinNameLocale() {
+        return coinNameLocale;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCoinNameLocale(CoinNameLocale coinNameLocale) {
+        this.coinNameLocale = coinNameLocale;
     }
 
     public String getSymbol() {
